@@ -107,28 +107,32 @@ const sendEmail = (e) => {
   e.preventDefault()
 
   // serviceID, templateID, form, public key
-  emailjs.sendForm(
-    "service_xgm34qs",
-    "template_l2k98ru",
-    "#contact-form",
-    "1sDf-xYzZtStPvfKj"
-  )
-  .then(() => {
-    // show sent message
-    contactMessage.textContent = 'Your message has been sent successfully 🚀'
+  emailjs
+    .sendForm(
+      "service_xgm34qs",
+      "template_l2k98ru",
+      "#contact-form",
+      "1sDf-xYzZtStPvfKj"
+    )
+    .then(
+      () => {
+        // show sent message
+        contactMessage.textContent =
+          "Your message has been sent successfully 🚀";
 
-    // clear form
-    setTimeout(() => {
-      contactMessage.textContent = ''
-    }, 4000)
+        // clear form
+        setTimeout(() => {
+          contactMessage.textContent = "";
+        }, 4000);
 
-    contactForm.reset()
-    
-  }, () => {
-    // show error message
-    contactMessage.textContent = 'Message not sent, try again later 😢'
-        contactMessage.style.color = 'red'
-    })
+        contactForm.reset();
+      },
+      () => {
+        // show error message
+        contactMessage.textContent = "Message not sent, try again later 😢";
+        contactMessage.style.color = "red";
+      }
+    );
 }
 
 
